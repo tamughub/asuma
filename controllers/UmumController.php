@@ -35,8 +35,16 @@ class UmumController extends Controller
      */
     public function actionIndex()
     {
+        $query = SuratUmum::find();
+        if(isset($_GET['q'])) {
+          $query = $query->filterWhere(['like', 'nomor_surat', $_GET['q']])
+                         ->orWhere(['like', 'hal', $_GET['q']])
+                         ->orWhere(['like', 'asal', $_GET['q']])
+                         ->orWhere(['like', 'isi_disposisi', $_GET['q']])
+                         ->orWhere(['like', 'catatan_disposisi_kasi', $_GET['q']]);
+        }
         $dataProvider = new ActiveDataProvider([
-            'query' => SuratUmum::find(),
+            'query' => $query,
         ]);
 
         return $this->render('index', [

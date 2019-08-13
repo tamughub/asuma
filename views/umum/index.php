@@ -16,21 +16,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Surat Umum', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <form method="get">
+      <input type="text" name="q" value="<?= isset($_GET['q']) ? $_GET['q'] : "" ?>" />
+      <input type="submit" value="Cari" />
+    </form>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'no',
-            'no_agenda',
+            //'id',
+            //'no',
+            //'no_agenda',
             'tanggal_terima',
             'nomor_surat',
-            //'tanggal_surat',
-            //'hal:ntext',
-            //'asal',
+            'tanggal_surat',
+            'hal:ntext',
+            'asal',
             //'batas_waktu',
             //'klasifikasi',
             //'sifat',
@@ -39,12 +42,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //'kepada_disposisi:ntext',
             //'klasifikasi_disposisi',
             //'sifat_disposisi',
-            //'isi_disposisi:ntext',
+            'isi_disposisi:ntext',
             //'catatan_disposisi:ntext',
             //'koordinator_disposisi',
             //'tgl_disposisi_kasi',
             //'kepada_disposisi_kasi:ntext',
-            //'catatan_disposisi_kasi:ntext',
+            'catatan_disposisi_kasi:ntext',
             //'perekam',
             //'agenda',
             //'tgl_agenda_dir',
