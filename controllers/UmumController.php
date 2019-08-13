@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * UmumController implements the CRUD actions for SuratUmum model.
@@ -26,6 +27,12 @@ class UmumController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+              'class' => AccessControl::className(),
+              'rules' => [['actions' => ['index','view'], 'allow' => true, 'roles' => ['@']],
+                          ['actions' => ['update','create','delete'],
+                           'allow' => !Yii::$app->user->isGuest && Yii::$app->user->id === 100]]
+            ]
         ];
     }
 
