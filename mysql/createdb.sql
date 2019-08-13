@@ -15,6 +15,7 @@ CREATE DATABASE `asuma`;
 --
 -- User: `asuma`
 --
+DROP USER 'asuma';
 CREATE USER 'asuma' IDENTIFIED BY 'asuma';
 GRANT ALL PRIVILEGES ON `asuma`.* TO 'asuma';
 
